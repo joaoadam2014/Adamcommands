@@ -1,0 +1,87 @@
+<html lang="pt-br">
+    <head>
+        <style>
+            p{
+                font-size: 1.4em;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            h1{
+                font-size: 2.5em;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            div{
+                border: 2px solid #333;
+                border-radius: 20px;
+            }
+            header{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 10px;
+                z-index: 1000;
+            }
+            a{
+                text-decoration: none;
+                -webkit-text-fill-color: white;
+                font-size: 1.5em;
+                background-color: blue;
+                border: 4px solid #333;
+                border-radius: 20px;
+                padding: 0.5em 1em;
+            }
+            a:hover{
+                animation: cresser linear 1000ms;
+                padding: 0.8em 1.3em;
+                font-size: 1.7em;
+                box-shadow: 20px 20px 0px 0px black;
+                background-color: rgb(9, 9, 95);
+            }
+            @keyframes cresser {
+                from {
+                    background-color: blue;
+                    padding: 0.5em 1em;
+                    font-size: 1.5em;
+                    box-shadow: 0px 0px 0px 0px black;
+                }
+                to {
+                    background-color: rgb(9, 9, 95);
+                    padding: 0.8em 1.3em;
+                    font-size: 1.7em;
+                    box-shadow: 20px 20px 0px 0px black;
+                }
+            }
+            body {
+                padding-top: 120px; /* empurra o conteúdo pra baixo */
+            }
+        </style>
+    </head>
+    <body>
+        <header><a href="MainAdamcommand.html">Voltar para a engine</a><a href="#introducao">introdução</a><a href="#proposito">Próposito</a><a href="#sintaxeb">Sintaxe basíco</a></header>
+        <div id="introducao"><h1>Introdução</h1><p>AdamCommand é uma linguagem de programação parecida com .json+html+javascript e facil de entender como .scratch e não é limitada, contem loops como "ever{atraso} endever" condições como if(2==2/ O que ira acontecer) 
+            criador de interfaces graficas simples como box(cor;altura;largura;nome;x;y) ou circle(cor;altura;largura;nome;x;y) e também delays faceis de entender como wait(milessegundos)e para atualizar elementos a qualquer momento temos o clear() que limpa a tela
+            temos stop() que para o código.E console para depuração, o histórico, temos variaveis value(nome;valor) temos funções func(nome/oque irá acontecer) temos call(nome da função) que executa uma função e insert(elemento html) que é usado para inserir elementos
+            para o usuário ter mais liberdade.Temos um menu de exportação e importação simples com o formato .adamCommand.
+        </p></div><br>
+        <div id="proposito"><h1>Propósito</h1><p>Pensada para ser util para fazer jogos 2d e 3d e interfaces graficas e até mesmo animações.Planejada para ser facil de entender.  ela funciona pegando uma unica string do textarea, usando um parse simples e um parse complexo para subdividir ela
+            e essas subdivisões são subdivididas para encontrar seus parâmetros e executar as funções dentro da subdivição e para funções que execultam outras funções como if(parametros comparação parametros) endif onde com essas subdivisões localizam o endif ou endfunction e até mesmo endever
+            mais proximo e execultar tudo o que está entre eles se a condição for satisfeita, ou a função for chamada e até mesmo em loop. e até mesmo, além dos dois parses,usa varios tipos de parse para dividir a string em subdivisões cada vez menores. e usando trims para ingnorar espaços desnecessários
+        </p></div><br>
+        <div id="sintaxeb"><h1>sintaxe basíco:</h1><p>os parâmetros para funções em .AdamCommand funciona da seguinte forma: eles são separados por ; por exemplo box(green;80;80;cleiton;300;300). para criar um elemento grafico usamos:</p>
+        <img src="imagems/circleExemplo.png" width="500px" height="250px"><img>
+        <img src="imagems/boxExemplo.png" width="500px" height="250px"><img>
+        <p>temos aqui este exemplo, ele explica como usar lógica no adamcommand:</p>
+        <img src="imagems/exemplo1.png" width="500px" height="250px"></img>
+        <img src="imagems/exemplo2.png" width="500px" height="250px"></img><br>
+        <p>exemplo de movimento:</p>
+         <img src="imagems/exemplo4.png" width="500px" height="250px"></img><br>
+        <p>como importar imagems:</p>
+         <img src="imagems/exemplo3.png" width="500px" height="250px"></img>
+         <img src="imagems/exemplo5.png" width="500px" height="250px"></img><br>
+         <p>se quiser parar o código:</p>
+         <img src="imagems/exemplo6.png" width="500px" height="250px"></img><br>
+    </div>
+    </body>
+</html>
+
