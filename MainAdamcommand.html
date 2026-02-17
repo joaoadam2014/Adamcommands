@@ -31,6 +31,16 @@
                 vertical-align: auto;
                 left:0%;
             }
+            tr{
+                border:1px solid rgb(255, 255, 255);
+            }
+            table{
+                border:1px solid rgb(255, 255, 255);
+            }
+            .table{
+                overflow-y: auto;
+                height: 500px;
+            }
             .elementoOutro { color: blue; font-weight: bold; }
             .sucesso { color: green; }
             .erro { color: red; }
@@ -45,8 +55,14 @@
         <button onclick="execute(0, 0)">Acontecer codigo</button><button onclick="exportar()">Exportar codigo</button><button onclick="inportar()">carregar codigo inportado</button><br><br>
         <textarea type="text" id="code_box" class="elementoOutro, sucesso, erro, padrao"></textarea>
         <input type="file" id="Arquivo" accept="codigo,.AdamCommand" class="elementoOutro, sucesso, erro, padrao">
+        <div style="border:1px solid #333; width:50%; height:150px; right:0;position: absolute;bottom:0;">
+            <table border="1px solid #333"height="100%" width="100%" class="padrao">
+                <tbody></tbody>
+            </table>
+        </div>
         <script type="text/javascript">
         let inputs=document.querySelectorAll("textarea")
+        let hierarquia=document.querySelector("tbody")
         let q=0
         let selecionado=0
         let input= inputs[selecionado]
@@ -56,8 +72,13 @@
             "key":0,
         }
         let funcs={}
+        function irLinha(linha){
+            let LineHeight=16
+            input.scrollTop=(linha-1)*LineHeight
+        }
         async function execute(m,b){
             let comandos=input.value.split(")")
+            hierarquia.innerHTML=""
             for (let i=0; i<comandos.length; i++){
                 if (b==0){comandos=input.value.split(")")}else{comandos=b}
                 if (m==0){var palavra=comandos[i]}else{var palavra=comandos[m]}
@@ -78,6 +99,8 @@
                 }
                 if (palavra.split("(")[0]=="stop"){
                     falar.innerHTML=""
+                    vars={"key":0}
+                    funcs={}
                     historico.innerHTML=historico.innerHTML+"<br><span class='elementoOutro'> codigo parado </span>"
                     break
                 }
@@ -281,6 +304,24 @@
                     }
                   
                     continue;
+                }
+                if(palavra.startsWith("subcode(")){
+                    let nome=palavra.slice(8,palavra.length).trim()
+                    let linhas=input.value.split("\n").length
+                    let diferenca=linhas-i
+                    let line=((diferenca-i)-1)-linhas
+                    if (line<0) line=line*-1;
+                    console.log(line)
+                    hierarquia.innerHTML=hierarquia.innerHTML+' <tr height="1%" width="100%"><td width="10%"><img src="imagems/codeNormal.png" width="100%" height="50%"></td><td width="100%">'+nome+'<button onclick="irLinha('+line+')">Abrir</button></td></tr>'
+                }
+                if(palavra.startsWith("subconfig(")){
+                    let nome=palavra.slice(10,palavra.length).trim()
+                    let linhas=input.value.split("\n").length
+                    let diferenca=linhas-i
+                    let line=((diferenca-i)-1)-linhas
+                    if (line<0) line=line*-1;
+                    console.log(line)
+                    hierarquia.innerHTML=hierarquia.innerHTML+' <tr height="1%" width="100%"><td width="10%"><img src="imagems/codeConfig.png" width="100%" height="50%"></td><td width="100%">'+nome+'<button onclick="irLinha('+line+')">Abrir</button></td></tr>'
                 }
            }
            function conseguirvar(id){
