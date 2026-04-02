@@ -16,12 +16,15 @@
         <input type="text"></input>
         <button onclick="perguntaenter(0)">enter</button><br>
         <b id="saybox">ola, sou a Ai feita por João adam</b>
-        <script type="text/javascript" src="../Bibliotecas/AiENovasOperacoes.js"></script>
+         <script type="text/javascript" src="../Bibliotecas/AdamAi/bancoExtra.js"></script>
+        <script type="text/javascript" src="../Bibliotecas/AdamAi/AiENovasOperacoes.js"></script>
         <script type="text/javascript">
-        let AisayBox=document.getElementById("saybox")
+           let AisayBox=document.getElementById("saybox")
            let playerSaybox=document.querySelector("input")
            function perguntaenter(parametro){
-                AisayBox.innerHTML=Ai(playerSaybox.value)              
+                Ai(playerSaybox.value).then(resposta=>{
+                    AisayBox.innerHTML=resposta
+                })           
             }       
         </script>
     </body>

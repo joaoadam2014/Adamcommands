@@ -93,7 +93,7 @@
                     if (isNaN(width)){width=conseguirvar(width)}
                     if (isNaN(posX)){posX=conseguirvar(posX)}
                     if (isNaN(posY)){posY=conseguirvar(posY)}
-                   falar.innerHTML=falar.innerHTML+"<div class='"+palavra.split("(")[1].split(";")[3]+"'style='background:"+palavra.split("(")[1].split(";")[0]+";height:"+height+"px;width:"+width+"px;border-radius:0px;position:absolute;left:"+posX+";bottom:"+posY+"'></div>"
+                   falar.innerHTML=falar.innerHTML+"<div id='"+palavra.split("(")[1].split(";")[3]+"'style='background:"+palavra.split("(")[1].split(";")[0]+";height:"+height+"px;width:"+width+"px;border-radius:0px;position:absolute;left:"+posX+";bottom:"+posY+"'></div>"
                    historico.innerHTML=historico.innerHTML+"<br><span class='sucesso'>Caixa gerada com sucesso:"+palavra.split("(")[1].split(";")[3]+", caixa de cor "+palavra.split("(")[1].split(";")[0]+", altura de:"+palavra.split("(")[1].split(";")[1]+", com sua largura de:"+palavra.split("(")[1].split(";")[2]+"</span>"
                    continue
                 }
@@ -129,7 +129,7 @@
                     if (isNaN(posX)){posX=conseguirvar(posX)}
                     if (isNaN(posY)){posY=conseguirvar(posY)}
                     let circunferencia=palavra.split("(")[1].split(";")[2]/2
-                   falar.innerHTML=falar.innerHTML+"<div class='"+palavra.split("(")[1].split(";")[3]+"'style='background:"+palavra.split("(")[1].split(";")[0]+";height:"+height+"px;width:"+width+"px;border-radius:"+circunferencia+"px;position:absolute;left:"+posX+";bottom:"+posY+"'></div>"
+                   falar.innerHTML=falar.innerHTML+"<div id='"+palavra.split("(")[1].split(";")[3]+"'style='background:"+palavra.split("(")[1].split(";")[0]+";height:"+height+"px;width:"+width+"px;border-radius:"+circunferencia+"px;position:absolute;left:"+posX+";bottom:"+posY+"'></div>"
                    historico.innerHTML=historico.innerHTML+"<br><span class='sucesso'>Circulo gerada com sucesso:"+palavra.split("(")[1].split(";")[3]+", circulo de cor "+palavra.split("(")[1].split(";")[0]+", altura de:"+palavra.split("(")[1].split(";")[1]+", com sua largura de:"+palavra.split("(")[1].split(";")[2]+"</span>"
                    continue
                 }
@@ -200,43 +200,44 @@
                     let verif=function (){
                         if (Condicao.includes("==")){let numeros=Condicao.split("==")
                             let valor1=Number(numeros[0]); let valor2=Number(numeros[1]); 
-                            if(isNaN(valor1)) {valor1=conseguirvar(valor1)}
-                            if(isNaN(valor2)) {valor2=conseguirvar(valor2)}
+                            if(valor1==Number(valor1)){}else{valor1=conseguirvar(valor1)}
+                            if(valor2==Number(valor2)){}else{valor2=conseguirvar(valor2)}
                             if (valor1==valor2){return(true)}else{return(false)}
                         }
                         if (Condicao.includes("IM")){let numeros=Condicao.split("IM")
                             let valor1=Number(numeros[0]); let valor2=Number(numeros[1]); 
-                            if(isNaN(valor1)) {valor1=conseguirvar(valor1)}
-                            if(isNaN(valor2)) {valor2=conseguirvar(valor2)}
+                            if(valor1==Number(valor1)){}else{valor1=conseguirvar(valor1)}
+                            if(valor2==Number(valor2)){}else{valor2=conseguirvar(valor2)}
                             if (valor1<=valor2){return(true)}else{return(false)}
                         }
                         if (Condicao.includes("MI")){let numeros=Condicao.split("MI")
                             let valor1=Number(numeros[0]); let valor2=Number(numeros[1]); 
-                            if(isNaN(valor1)) {valor1=conseguirvar(valor1)}
-                            if(isNaN(valor2)) {valor2=conseguirvar(valor2)}
+                            if(valor1==Number(valor1)){}else{valor1=conseguirvar(valor1)}
+                            if(valor2==Number(valor2)){}else{valor2=conseguirvar(valor2)}
                             if (valor1>=valor2){return(true)}else{return(false)}
                         }
                         if (Condicao.includes("NN")){let numeros=Condicao.split("NN")
                             let valor1=Number(numeros[0]); let valor2=Number(numeros[1]); 
-                            if(isNaN(valor1)) {valor1=conseguirvar(valor1)}
-                            if(isNaN(valor2)) {valor2=conseguirvar(valor2)}
+                            if(valor1==Number(valor1)){}else{valor1=conseguirvar(valor1)}
+                            if(valor2==Number(valor2)){}else{valor2=conseguirvar(valor2)}
                             if (valor1!=valor2){return(true)}else{return(false)}
                         } 
                         if (Condicao.includes(">")){let numeros=Condicao.split(">")
                             let valor1=Number(numeros[0]); let valor2=Number(numeros[1]); 
-                            if(isNaN(valor1)) {valor1=conseguirvar(valor1)}
-                            if(isNaN(valor2)) {valor2=conseguirvar(valor2)}
+                            if(valor1==Number(valor1)){}else{valor1=conseguirvar(valor1)}
+                            if(valor2==Number(valor2)){}else{valor2=conseguirvar(valor2)}
                             if (valor1>valor2){return(true)}else{return(false)}
                         }
                         if (Condicao.includes("<")){let numeros=Condicao.split("<")
                             let valor1=Number(numeros[0]); let valor2=Number(numeros[1]); 
-                            if(isNaN(valor1)) {valor1=conseguirvar(valor1)}
-                            if(isNaN(valor2)) {valor2=conseguirvar(valor2)}
+                            if(valor1==Number(valor1)){}else{valor1=conseguirvar(valor1)}
+                            if(valor2==Number(valor2)){}else{valor2=conseguirvar(valor2)}
                             if (valor1<valor2){return(true)}else{return(false)}
                         }
                         return false
                     };
                       if (verif()){
+                        bloco=bloco.replace(/\//g,"")
                         await execute(0, bloco.split(")"))
                         alert(Condicao)     
                       }else{
@@ -267,7 +268,7 @@
                     let nome=parametros.split(";")[0]
                     let valor=parametros.split(";")[1]
                     let operador=null;
-                    if (isNaN(valor)){valor=conseguirvar(valor)}
+                    if(valor==Number(valor)){}else{valor=conseguirvar(valor)}
                     valor=String(valor).trim()
                     if (valor.includes("+")) operador = "+";
                     else if (valor.includes("-")) operador = "-";
@@ -313,6 +314,7 @@
                     if (line<0) line=line*-1;
                     console.log(line)
                     hierarquia.innerHTML=hierarquia.innerHTML+' <tr height="1%" width="100%"><td width="10%"><img src="imagems/codeNormal.png" width="100%" height="50%"></td><td width="100%">'+nome+'<button onclick="irLinha('+line+')">Abrir</button></td></tr>'
+                    continue
                 }
                 if(palavra.startsWith("subconfig(")){
                     let nome=palavra.slice(10,palavra.length).trim()
@@ -322,6 +324,67 @@
                     if (line<0) line=line*-1;
                     console.log(line)
                     hierarquia.innerHTML=hierarquia.innerHTML+' <tr height="1%" width="100%"><td width="10%"><img src="imagems/codeConfig.png" width="100%" height="50%"></td><td width="100%">'+nome+'<button onclick="irLinha('+line+')">Abrir</button></td></tr>'
+                    continue
+                }
+                if(palavra.split(".")[1].startsWith("color(")){
+                    let COR_ESCOLHIDA=palavra.split(".")[1].split("(")[1]
+                    let OBJETO_STRING=palavra.split(".")[0];
+                    if(OBJETO_STRING.includes("/")){
+                        OBJETO_STRING=OBJETO_STRING.split("/")[1];
+                        OBJETO_STRING=OBJETO_STRING.trim();
+                    }
+                    let OBJETO_WEB=document.getElementById(OBJETO_STRING)
+                    historico.innerHTML=historico.innerHTML+"<br><span class='sucesso'>atributo alterado: "+OBJETO_STRING+" recebe cor:"+COR_ESCOLHIDA+"</span>"
+                    if(OBJETO_WEB==null){
+                         historico.innerHTML=historico.innerHTML+"<br><span class='erro'>O objeto "+OBJETO_STRING+" nao existe para receber a cor:"+COR_ESCOLHIDA+"</span>"
+                    }else{
+                        OBJETO_WEB.style.backgroundColor=COR_ESCOLHIDA;
+                        continue
+                    }
+                }
+                if(palavra.split(".")[1].startsWith("x(")){
+                    let x_ESCOLHIDA=palavra.split(".")[1].split("(")[1]
+                    if(x_ESCOLHIDA==Number(x_ESCOLHIDA)){x_ESCOLHIDA=conseguirvar(x_ESCOLHIDA)}
+                    let OBJETO_STRING=palavra.split(".")[0];
+                    if(OBJETO_STRING.includes("/")){
+                        OBJETO_STRING=OBJETO_STRING.split("/")[1];
+                        OBJETO_STRING=OBJETO_STRING.trim();
+                    }
+                    let OBJETO_WEB=document.getElementById(OBJETO_STRING)
+                    historico.innerHTML=historico.innerHTML+"<br><span class='sucesso'>atributo alterado: "+OBJETO_STRING+" recebe x:"+x_ESCOLHIDA+"</span>"
+                    if(OBJETO_WEB==null){
+                         historico.innerHTML=historico.innerHTML+"<br><span class='erro'>O objeto "+OBJETO_STRING+" nao existe para receber a x:"+x_ESCOLHIDA+"</span>"
+                    }else{
+                        OBJETO_WEB.style.left=x_ESCOLHIDA+"px"
+                        continue
+                    }
+                }
+                if(palavra.split(".")[1].startsWith("y(")){
+                    let y_ESCOLHIDA=palavra.split(".")[1].split("(")[1]
+                    if(y_ESCOLHIDA==Number(y_ESCOLHIDA)){y_ESCOLHIDA=conseguirvar(y_ESCOLHIDA)}
+                    let OBJETO_STRING=palavra.split(".")[0];
+                    let OBJETO_WEB=document.getElementById(OBJETO_STRING)
+                    historico.innerHTML=historico.innerHTML+"<br><span class='sucesso'>atributo alterado: "+OBJETO_STRING+" recebe y:"+y_ESCOLHIDA+"</span>"
+                    if(OBJETO_WEB==null){
+                         historico.innerHTML=historico.innerHTML+"<br><span class='erro'>O objeto "+OBJETO_STRING+" nao existe para receber a y:"+y_ESCOLHIDA+"</span>"
+                    }else{
+                        OBJETO_WEB.style.bottom=y_ESCOLHIDA+"px"
+                        continue
+                    }
+                }
+                if(palavra.split(".")[1].startsWith("hie(")){
+                    let linhas=input.value.split("\n").length
+                    let diferenca=linhas-i
+                    let line=((diferenca-i)-1)-linhas
+                    let OBJETO_STRING=palavra.split(".")[0];
+                    let OBJETO_WEB=document.getElementById(OBJETO_STRING)
+                    historico.innerHTML=historico.innerHTML+"<br><span class='sucesso'>atributo alterado: "+OBJETO_STRING+" recebe hierarquia </span>"
+                    if(OBJETO_WEB==null){
+                         historico.innerHTML=historico.innerHTML+"<br><span class='erro'>O objeto "+OBJETO_STRING+" nao existe para receber a hierarquia</span>"
+                    }else{
+                           hierarquia.innerHTML=hierarquia.innerHTML+' <tr height="1%" width="100%"><td width="10%"><img src="imagems/codeObject.png" width="100%" height="50%"></td><td width="100%">'+OBJETO_STRING+'<button onclick="irLinha('+line+')">Abrir</button></td></tr>'
+                           continue
+                    }
                 }
            }
            function conseguirvar(id){
